@@ -1,0 +1,162 @@
+header {
+  background-color: #666; /* Fondo gris oscuro */
+  color: #fff;
+  text-align: center;
+  height: 150px;
+  padding: 10px;
+  position: relative; /* Mantenemos posición relativa para elementos secundarios */
+}
+
+h1 {
+  background-color: #ccc; /* Fondo gris claro */
+  color: #000;
+  padding: 20px; /* Ajusta el espacio entre los fondos */
+  margin: 10px auto; /* Elimina el margen predeterminado */
+  width: 20%;
+  border-radius: 10px;
+}
+
+.search-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+#search-input-index, #search-input-tools {
+  padding: 10px;
+  width: 60%;
+  margin-right: 10px;
+}
+
+#search-button-index, #search-button-tools {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+/* Estilos para los botones */
+#login-button, #contact-button, #inicio-tools-button, #home-button #inicio-button {
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  position: absolute;
+}
+
+/* Posición para el botón de inicio de sesión */
+#login-button {
+  bottom: 10px; /* Mueve el botón al fondo del header */
+  right: 10px; /* Ajusta el botón a la derecha */
+}
+
+/* Posición para el botón de contacto */
+#contact-button {
+  bottom: 10px; /* Mueve el botón al fondo del header */
+  left: 10px; /* Ajusta el botón a la izquierda */
+}
+
+/* Posición para el botón de herramientas */
+#inicio-tools-button {
+  bottom: 10px; /* Mueve el botón al fondo del header */
+  left: 120px; /* Ajusta el botón a la izquierda, después del botón de contacto */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+
+main {
+  padding: 20px;
+}
+
+.container {
+  width: 60%;
+  margin: 0 auto; /* Centrar horizontalmente */
+  margin-top: 10px;
+  text-align: left; /* Centrar contenido dentro del contenedor */
+}
+
+#experiencia-titulo {
+  margin: 5px 0;
+  background-color: #eee;
+  border-radius: 5px;
+  width: 30%;
+}
+
+textarea#experiencia-texto,
+textarea.editar-texto {
+  width: 100%; /* Tamaño del textarea, descontando el padding */
+  height: 300px; /* Altura deseada */
+  margin-bottom: 10px; /* Espacio inferior */
+  background-color: #eee;
+  color: #000; /* Texto negro */
+  border-radius: 5px;
+}
+
+.upload-button {
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Estilos para el contenedor de los botones */
+.button-file-container {
+  display: flex;
+  gap: 10px; /* Espacio entre los elementos */
+  margin-top: 10px;
+  margin-bottom: 70px;
+}
+
+/* Estilos específicos para los botones dentro del contenedor */
+.button-file-container button {
+  margin-left: 0;
+}
+
+input[type="file"] {
+  display: inline-block;
+}
+
+button {
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-left: 0;
+}
+
+.experiencia,
+.trabajo {
+  width: 60%;
+  margin: auto;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  position: relative; /* Para posicionar el texto de fecha y hora correctamente */
+  overflow: hidden; /* Para evitar que la imagen sobresalga del contenedor */
+  max-width: 100%; /* Ancho máximo del contenedor */
+}
+
+.experiencia img,
+.trabajo img {
+  max-width: 100%; /* La imagen se ajustará al ancho máximo del contenedor */
+  height: auto; /* La altura se ajustará automáticamente */
+}
+
+.fecha {
+  position: absolute;
+  top: 10px; /* Ajusta según sea necesario */
+  right: 10px; /* Ajusta según sea necesario */
+  text-align: right; /* Alinear a la derecha */
+}

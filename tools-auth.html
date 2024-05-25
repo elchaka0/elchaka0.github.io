@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión para Herramientas</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Iniciar Sesión</h1>
+  </header>
+  <div class="container">
+    <form id="tools-login-form">
+      <input type="text" id="username" placeholder="Nombre de usuario">
+      <input type="password" id="password" placeholder="Contraseña">
+      <button type="submit">Iniciar Sesión</button>
+    </form>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const loginForm = document.getElementById("tools-login-form");
+
+      loginForm.addEventListener("submit", function(event) {
+        event.preventDefault(); // Evitar que se envíe el formulario
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        // Verificar las credenciales
+        if (username === "admin" && password === "admin123") {
+          // Credenciales correctas, almacenar estado de inicio de sesión
+          localStorage.setItem("usuarioAutenticadoHerramientas", true);
+          // Redirigir a la página de herramientas
+          window.location.href = 'tools.html';
+        } else {
+          // Credenciales incorrectas, mostrar mensaje de error
+          alert("Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.");
+        }
+      });
+    });
+  </script>
+</body>
+</html>

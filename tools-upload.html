@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subir Nueva Herramienta</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/tools-upload.css">
+</head>
+<body>
+  <header>
+    <h1>Subir Herramientas</h1>
+    <nav>
+      <button id="tools-button">Herramientas</button>
+    </nav>
+  </header>
+  <div class="container">
+    <input type="text" id="herramienta-titulo" placeholder="Título de la herramienta">
+    <textarea id="herramienta-descripcion" class="editar-texto" placeholder="Escribe tu herramienta aquí..."></textarea>
+    <div class="button-file-container">
+      <input type="file" id="imagen-input" accept="image/*">
+      <button id="agregar-herramienta" class="upload-button">Agregar Herramienta</button>
+      <button id="borrar-herramientas" class="upload-button">Borrar Herramientas</button>
+    </div>
+  </div>
+  <main>
+    <div id="herramientas">
+      <!-- Aquí se mostrarán las herramientas dinámicamente -->
+    </div>
+  </main>
+  <script src="js/tools-upload.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const homeButton = document.getElementById("tools-button");
+      homeButton.addEventListener("click", function() {
+        window.location.href = 'tools.html';
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+

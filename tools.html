@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Herramientas</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Herramientas</h1>
+    <nav>
+      <button id="login-button">Iniciar Sesión</button>
+      <button id="home-button">Inicio</button>
+    </nav>
+  </header>
+  <div class="search-container">
+    <input type="text" id="search-input-tools" placeholder="Buscar...">
+    <button id="search-button-tools">Buscar</button>
+  </div>
+  <main>
+    <div id="herramientas">
+      <!-- Aquí se mostrarán las herramientas dinámicamente -->
+    </div>
+  </main>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const loginButton = document.getElementById("login-button");
+      const homeButton = document.getElementById("home-button");
+
+      loginButton.addEventListener("click", function() {
+        window.location.href = 'tools-login.html';
+      });
+
+      homeButton.addEventListener("click", function() {
+        window.location.href = 'index.html';
+      });
+
+      const usuarioAutenticado = localStorage.getItem("usuarioAutenticadoHerramientas");
+
+      if (!usuarioAutenticado) {
+        window.location.href = 'tools-auth.html';
+      }
+
+      cargarHerramientas();
+
+      function cargarHerramientas() {
+        let herramientas = JSON.parse(localStorage.getItem("herramientas")) || [];
+        herramientas.forEach((herramienta) => {
+          mostrarHerramienta(herramienta);
+        });
+      }
+
+      function mostrarHerramienta(herramienta) {
+        const herramientasDiv = document.getElementById("herramientas");
+        const herramientaDiv = document.createElement("div");
+        herramientaDiv.classList.add("trabajo");
+        herramientaDiv.innerHTML = `
+          <h2>${herramienta.titulo}</h2>
+          <p>${herramienta.descripcion}</p>
+          ${herramienta.imagen ? `<img src="${herramienta.imagen}" alt="Imagen de la herramienta">` : ''}
+          <p class="fecha">${herramienta.fecha}</p>
+        `;
+        herramientasDiv.prepend(herramientaDiv);
+      }
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const searchButton = document.getElementById("search-button-tools");
+      const searchInput = document.getElementById("search-input-tools");
+
+      searchButton.addEventListener("click", function() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const herramientas = document.querySelectorAll("#herramientas .trabajo");
+
+        herramientas.forEach(herramienta => {
+          const titulo = herramienta.querySelector("h2").textContent.toLowerCase();
+          const descripcion = herramienta.querySelector("p").textContent.toLowerCase();
+          const imagenAlt = herramienta.querySelector("img") ? herramienta.querySelector("img").getAttribute("alt").toLowerCase() : '';
+
+          if (titulo.includes(searchTerm) || descripcion.includes(searchTerm) || imagenAlt.includes(searchTerm)) {
+            herramienta.style.display = "block";
+          } else {
+            herramienta.style.display = "none";
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+

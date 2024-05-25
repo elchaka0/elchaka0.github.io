@@ -1,0 +1,33 @@
+/* Estilos específicos para tools.html */
+
+.container {
+  width: 60%;
+  margin: 0 auto; /* Centrar horizontalmente */
+  margin-top: 10px;
+  text-align: left; /* Centrar contenido dentro del contenedor */
+}
+
+.herramienta {
+  width: 60%;
+  margin: auto;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  position: relative; /* Para posicionar el texto de fecha y hora correctamente */
+  overflow: hidden; /* Para evitar que la imagen sobresalga del contenedor */
+  max-width: 100%; /* Ancho máximo del contenedor */
+}
+
+.herramienta img {
+  max-width: 100%; /* La imagen se ajustará al ancho máximo del contenedor */
+  height: auto; /* La altura se ajustará automáticamente */
+}
+
+.fecha {
+  position: absolute;
+  top: 10px; /* Ajusta según sea necesario */
+  right: 10px; /* Ajusta según sea necesario */
+  text-align: right; /* Alinear a la derecha */
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis trabajos</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Trabajos</h1>
+    <nav>
+      <button id="login-button">Iniciar Sesión</button>
+      <button id="contact-button">Contacto</button>
+      <button id="inicio-tools-button">Herramientas</button>
+    </nav>
+  </header>
+  <div class="search-container">
+    <input type="text" id="search-input-index" placeholder="Buscar...">
+    <button id="search-button-index">Buscar</button>
+  </div>
+  <main id="trabajos">
+    <!-- Contenido principal de la página -->
+  </main>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const contactButton = document.getElementById("contact-button");
+      const toolsButton = document.getElementById("inicio-tools-button");
+      const loginButton = document.getElementById("login-button");
+
+      contactButton.addEventListener("click", function() {
+        window.location.href = 'contact.html';
+      });
+
+      toolsButton.addEventListener("click", function() {
+        window.location.href = 'tools-auth.html';  // Cambiar redirección
+      });
+
+      loginButton.addEventListener("click", function() {
+        window.location.href = 'login.html';
+      });
+    });
+  </script>
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const trabajosDiv = document.getElementById("trabajos");
+
+  function cargarTrabajos() {
+    let trabajos = JSON.parse(localStorage.getItem("experiencias")) || [];
+    trabajos.forEach((trabajo) => {
+      mostrarTrabajo(trabajo);
+    });
+  }
+
+  function mostrarTrabajo(trabajoNuevo) {
+    // Verificar si ya existe un trabajo con el mismo título
+    const trabajos = document.querySelectorAll("#trabajos .trabajo");
+    let trabajoExistente = null;
+    trabajos.forEach(trabajo => {
+      const tituloExistente = trabajo.querySelector("h2").textContent;
+      if (tituloExistente === trabajoNuevo.titulo) {
+        trabajoExistente = trabajo;
+      }
+    });
+
+    // Si ya existe un trabajo con el mismo título, actualizar su contenido
+    if (trabajoExistente) {
+      trabajoExistente.querySelector("p").textContent = trabajoNuevo.descripcion;
+      if (trabajoNuevo.imagen) {
+        trabajoExistente.querySelector("img").src = trabajoNuevo.imagen;
+        trabajoExistente.querySelector("img").alt = "Imagen de la experiencia";
+      }
+      trabajoExistente.querySelector(".fecha").textContent = trabajoNuevo.fecha;
+    } else {
+      // Si no existe, crear un nuevo trabajo
+      const trabajoDiv = document.createElement("div");
+      trabajoDiv.classList.add("trabajo");
+      trabajoDiv.innerHTML = `
+        <h2>${trabajoNuevo.titulo}</h2>
+        <p>${trabajoNuevo.descripcion}</p>
+        ${trabajoNuevo.imagen ? `<img src="${trabajoNuevo.imagen}" alt="Imagen de la experiencia">` : ''}
+        <p class="fecha">${trabajoNuevo.fecha}</p>
+      `;
+      trabajosDiv.prepend(trabajoDiv);
+    }
+  }
+
+  cargarTrabajos();
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const searchButton = document.getElementById("search-button-index");
+  const searchInput = document.getElementById("search-input-index");
+
+  searchButton.addEventListener("click", function() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const trabajos = document.querySelectorAll("#trabajos .trabajo");
+
+    trabajos.forEach(trabajo => {
+      const titulo = trabajo.querySelector("h2").textContent.toLowerCase();
+      const descripcion = trabajo.querySelector("p").textContent.toLowerCase();
+      const imagenAlt = trabajo.querySelector("img") ? trabajo.querySelector("img").getAttribute("alt").toLowerCase() : ''; // Obtener el texto alternativo de la imagen si existe
+
+      if (titulo.includes(searchTerm) || descripcion.includes(searchTerm) || imagenAlt.includes(searchTerm)) {
+        trabajo.style.display = "block";
+      } else {
+        trabajo.style.display = "none";
+      }
+    });
+  });
+});
+</script>
+
+
+
+</body>
+</html>
